@@ -1416,22 +1416,6 @@
 	affected_mob.AdjustSleeping(-2 SECONDS * metabolization_ratio * seconds_per_tick)
 	holder.remove_reagent(/datum/reagent/consumable/sugar, 3 * metabolization_ratio * seconds_per_tick)
 
-//Trek Chems, used primarily by medibots. Only heals a specific damage type, but is very efficient.
-
-/datum/reagent/medicine/inaprovaline //is this used anywhere?
-	name = "Inaprovaline"
-	description = "Stabilizes the breathing of patients. Good for those in critical condition."
-	color = "#A4D8D8"
-	ph = 8.5
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
-	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
-
-/datum/reagent/medicine/inaprovaline/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
-	. = ..()
-	if(affected_mob.losebreath >= 5)
-		affected_mob.losebreath -= 2.5 * metabolization_ratio * seconds_per_tick
-		return UPDATE_MOB_HEALTH
-
 /datum/reagent/medicine/regen_jelly
 	name = "Regenerative Jelly"
 	description = "Gradually regenerates all types of damage, without harming slime anatomy."
